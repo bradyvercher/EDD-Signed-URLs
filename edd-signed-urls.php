@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: EDD Signed URLs
- * Plugin URI: 
+ * Plugin URI: https://github.com/bradyvercher/EDD-Signed-URLs
  * Description: Properly signed URLs for Easy Digital Downloads for more security.
  * Version: 1.0
  * Author: Blazer Six, Inc.
