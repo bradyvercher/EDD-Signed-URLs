@@ -61,7 +61,7 @@ function eddsurl_load() {
 function eddsurl_process_download_args( $args ) {
 	if ( isset( $_GET['eddfile'] ) && isset( $_GET['ttl'] ) && isset( $_GET['token'] ) ) {
 		// Kinda hacky method to generate the URL to test.
-		$parts = parse_url( add_query_arg() );
+		$parts = parse_url( add_query_arg( array() ) );
 		wp_parse_str( $parts['query'], $query_args );
 		$url = add_query_arg( $query_args, home_url() );
 		
@@ -171,7 +171,8 @@ function eddsurl_sign_url( $url, $args = array() ) {
  * @return string The token for the URL.
  */
 function eddsurl_get_token( $url ) {
-    $secret = apply_filters( 'eddsurl_get_token_secret', rawurlencode( base64_encode( wp_salt() ) ) );
+	$args = array();
+	$secret = apply_filters( 'eddsurl_get_token_secret', rawurlencode( base64_encode( wp_salt() ) ) );
 	
 	// Add additional args to the URL for generating the token.
 	// Allows for restricting access to IP and/or user agent.
